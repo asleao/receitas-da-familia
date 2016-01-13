@@ -1,0 +1,7 @@
+*.pyc
+__pycache__
+virtual
+modelagem
+tutorial
+db.backends.postgresql
+.DS_Store
