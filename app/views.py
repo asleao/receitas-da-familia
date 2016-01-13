@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework import generics
-from serializers import ReceitaSerializer,IngredienteQuantidadeSerializer
-from models import Receita,IngredienteQuantidade
+from serializers import ReceitaSerializer,IngredienteSerializer
+from models import Receita,Ingrediente
 
 
 class ReceitaList(generics.ListCreateAPIView):
@@ -14,10 +14,10 @@ class ReceitaDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = ReceitaSerializer    
 
 class ReceitaIngredientesList(generics.ListCreateAPIView):
-    queryset = IngredienteQuantidade.objects.all()
-    serializer_class = IngredienteQuantidadeSerializer
+    queryset = Ingrediente.objects.all()
+    serializer_class = IngredienteSerializer
 
 
 class ReceitaIngredientesDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = IngredienteQuantidade.objects.all()
-    serializer_class = IngredienteQuantidadeSerializer 
+    queryset = Ingrediente.objects.all()
+    serializer_class = IngredienteSerializer 

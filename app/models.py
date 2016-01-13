@@ -14,22 +14,7 @@ class UnidadeMedida(models.Model):
 
     def __str__(self):
         return self.descricao
-
-class Produto(models.Model):
-    nome = models.CharField(max_length=20, null=True)    
-
-    def __str__(self):
-        return self.nome
-
-class Ingrediente(models.Model):    
-    produto = models.ForeignKey(
-        Produto,
-        on_delete=models.CASCADE,
-        null=True
-    )         
-
-    def __str__(self):
-        return self.produto.nome            
+           
 
 class Receita(models.Model):
     autor = models.ForeignKey('auth.User', related_name='usuario')
@@ -50,25 +35,21 @@ class Receita(models.Model):
     def __str__(self):
         return self.nome   
 
-class IngredienteQuantidade(models.Model):       
+class Ingrediente(models.Model):   
     receita= models.ForeignKey(
-        Receita,
-        on_delete=models.CASCADE,
-        null=True
-    )    
-    ingrediente = models.ForeignKey(
-        Ingrediente,
-        on_delete=models.CASCADE,
-        null=True
-    )    
-    quantidade = models.PositiveIntegerField()    
+       Receita,
+       on_delete=models.CASCADE,
+       null=True
+       )    
+    nome = models.CharField(max_length=20,null=True)    
+    quantidade = models.PositiveIntegerField(null=True)    
     unidadeMedida=models.ForeignKey(
         UnidadeMedida,
         on_delete=models.CASCADE,
         null=True
         )  
-        
+
     def __str__(self):
-        return self.ingrediente.produto.nome     
+        return self.nome     
 
         
