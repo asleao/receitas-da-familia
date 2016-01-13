@@ -26,7 +26,7 @@ class ReceitaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Receita
         fields = ('id', 'autor','nome','categoria','dataCriacao','modoPreparo',
-                          'tempoPreparo','rendimento','grauDificuldade','nota')
+                          'tempoPreparo','rendimento','grauDificuldade','nota','foto')
 
 class IngredienteSerializer(serializers.ModelSerializer):    
     receita = ReceitaSerializer()    
