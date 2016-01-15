@@ -6,7 +6,9 @@ urlpatterns = [
         url(r'^receita/$',views.ReceitaList.as_view()),
         url(r'^receita/(?P<pk>[0-9]+)/$',views.ReceitaDetail.as_view()),
         url(r'^receita/ingredientes/$',views.ReceitaIngredientesList.as_view()),
-        url(r'^receita/ingredientes/(?P<pk>[0-9]+)/$',views.ReceitaIngredientesDetail.as_view())
+        url(r'^receita/ingredientes/(?P<pk>[0-9]+)/$',views.ReceitaIngredientesDetail.as_view()),
+        url(r'^categoria/$',views.CategoriaList.as_view()),
+        url(r'^categoria/(?P<pk>[0-9]+)/$',views.CategoriaDetail.as_view())
 ] 
 
 urlpatterns = format_suffix_patterns(urlpatterns)

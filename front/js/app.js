@@ -1,0 +1,2 @@
+angular.module("receitasFamilia",["ngMessages"]);
+
