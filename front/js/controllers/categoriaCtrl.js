@@ -1,4 +1,4 @@
-angular.module("receitasFamilia").controller("CategoriaCtrl", function($scope,$http){
+angular.module("receitasFamilia").controller("categoriaCtrl", function($scope,$http){
     $scope.categorias = [];
 
  	var carregarCategorias = function(){
