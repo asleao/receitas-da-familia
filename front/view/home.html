@@ -1,7 +1,7 @@
 <h2>Últimas Receitas</h2>
 <br>
 <div class="row">     
-    <div class="col-sm-6 col-md-2" ng-repeat = "receita in receitas | filter:$parent.filtroDeBusca" >
+    <div class="col-sm-6 col-md-2" ng-repeat = "receita in receitas | filter:filtroDeBusca" >
         <div class="thumbnail"  >               
             <div class="caption" >
                 <img id="indexImg" src="{{receita.foto}} "alt="..."  >
