@@ -15,7 +15,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">                           
                 <form class="navbar-form navbar-right" role="search">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Buscar" ng-model="filtroDeBusca">
+                        <input type="text" class="form-control" placeholder="Buscar" ng-model="$parent.filtroDeBusca.$">
                     </div>                          
                 </form>
                 <ul class="nav navbar-nav navbar-right" ng-controller = "categoriaCtrl">                                 
@@ -30,4 +30,4 @@
                     </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
-    </nav>
+</nav>

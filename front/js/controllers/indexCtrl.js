@@ -1,3 +1,3 @@
 angular.module("receitasFamilia").controller("indexCtrl", function($scope){
-        $scope.app = "Receitas da Família";
+        $scope.app = "Receitas da Família";        
 });
