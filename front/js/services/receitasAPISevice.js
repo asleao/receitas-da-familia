@@ -1,6 +1,6 @@
-angular.module("receitasFamilia").service("receitasAPI",function($http){
+angular.module("receitasFamilia").service("receitasAPI",function($http, config){
   
    this.getReceitas = function(){
-        return $http.get("http://localhost:8000/app/receita/?format=json");
+        return $http.get(config.baseUrl +"/receita/?format=json");
     };
 });

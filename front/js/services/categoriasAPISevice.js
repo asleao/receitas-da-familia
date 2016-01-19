@@ -1,6 +1,6 @@
-angular.module("receitasFamilia").service("categoriasAPI",function($http){
+angular.module("receitasFamilia").service("categoriasAPI",function($http, config){
   
    this.getCategorias = function(){
-        return $http.get("http://localhost:8000/app/categoria/?format=json");
+        return $http.get(config.baseUrl + "/categoria/?format=json");
     };
 });
