@@ -1,8 +1,8 @@
-angular.module("receitasFamilia").controller("receitaCtrl", function($scope,$http){
+angular.module("receitasFamilia").controller("receitaCtrl", function($scope,receitasAPI){
     $scope.receitas= [];
 
     var carregarReceitas = function(){
-        $http.get("http://localhost:8000/app/receita/?format=json").success(function(data){
+        receitasAPI.getReceitas().success(function(data){
             $scope.receitas =data;            
         });
     }; 
