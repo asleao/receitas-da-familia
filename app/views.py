@@ -18,6 +18,13 @@ class ReceitaDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Receita.objects.all()
     serializer_class = ReceitaSerializer
 
+class ReceitaInCategoria(generics.ListAPIView):
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)    
+    serializer_class = ReceitaSerializer
+    
+    def get_queryset(self):       
+        categoria = self.kwargs['pk']
+        return Receita.objects.filter(categoria_id=categoria).order_by('id')    
 
 class CategoriaList(generics.ListCreateAPIView):
     permission_classes = (permissions.IsAuthenticatedOrReadOnly,)

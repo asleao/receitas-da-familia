@@ -7,6 +7,7 @@
                 <img id="indexImg" src="{{receita.foto}} "alt="..."  >
                 <h3 >{{receita.nome}}</h3>
                 <p>{{receita.categoria.nome}}</p>
+                <p ng-repeat="ingrediente in receita.ingredientes">{{ingrediente.nome}}    {{ingrediente.quantidade}}  {{ingrediente.unidadeMedida.descricao}}</p>
                 <p><a href="#" class="btn btn-success" role="button">Visualizar</a></p>
             </div>
         </div>
