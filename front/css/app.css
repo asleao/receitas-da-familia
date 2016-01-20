@@ -4,13 +4,12 @@
     border: 0;
 }
 
-h2 !important{
-     font-weight: bold;   
-     margin-bottom: 100px;
+h2 {
+     font-weight: bold !important;   
+     margin-bottom: 10px !important;
 }
 
-.thumbnail{
-    
+.thumbnail{      
     width: 290px;
     height: 350px;
 }

@@ -1,9 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render,get_object_or_404
 from rest_framework import generics
 from .serializers import ReceitaSerializer,IngredienteSerializer,CategoriaSerializer,UserSerializer
-from .models import Receita,Ingrediente,Categoria
+from .models import Receita,Categoria
 from django.contrib.auth.models import User
 from rest_framework import permissions
+
 
 
 class ReceitaList(generics.ListCreateAPIView):
@@ -17,16 +18,6 @@ class ReceitaDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Receita.objects.all()
     serializer_class = ReceitaSerializer
 
-class ReceitaIngredientesList(generics.ListCreateAPIView):
-    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
-    queryset = Ingrediente.objects.all()
-    serializer_class = IngredienteSerializer
-
-
-class ReceitaIngredientesDetail(generics.RetrieveUpdateDestroyAPIView):
-    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
-    queryset = Ingrediente.objects.all()
-    serializer_class = IngredienteSerializer
 
 class CategoriaList(generics.ListCreateAPIView):
     permission_classes = (permissions.IsAuthenticatedOrReadOnly,)

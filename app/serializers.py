@@ -19,19 +19,21 @@ class UnidadeMedidaSerializer(serializers.ModelSerializer):
         model = UnidadeMedida
         fields = ('id', 'descricao')  
 
-class ReceitaSerializer(serializers.ModelSerializer):    
-    autor = UserSerializer()
-    categoria = CategoriaSerializer()
-
-    class Meta:
-        model = Receita
-        fields = ('id', 'autor','nome','categoria','dataCriacao','modoPreparo',
-                          'tempoPreparo','rendimento','grauDificuldade','nota','foto')
-
-class IngredienteSerializer(serializers.ModelSerializer):    
-    receita = ReceitaSerializer()    
-    unidadeMedida = UnidadeMedidaSerializer()
+class IngredienteSerializer(serializers.ModelSerializer):            
+    unidadeMedida =   UnidadeMedidaSerializer() 
 
     class Meta:
         model = Ingrediente
-        fields = ('id', 'receita','nome','quantidade','unidadeMedida')
+        fields = ('id', 'nome','quantidade','unidadeMedida')        
+
+class ReceitaSerializer(serializers.ModelSerializer):    
+    autor = UserSerializer()
+    categoria = CategoriaSerializer()
+    ingredientes = IngredienteSerializer(many=True)
+
+    class Meta:
+        model = Receita
+        fields = ('id', 'autor','nome','categoria','dataCriacao','ingredientes','modoPreparo',
+                          'tempoPreparo','rendimento','grauDificuldade','nota','foto')
+
+

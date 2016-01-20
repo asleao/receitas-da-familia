@@ -4,22 +4,33 @@ from django.utils import timezone
 from PIL import Image
 
 class Categoria(models.Model):
-    nome = models.CharField(max_length=20, null=True)    
+    nome = models.CharField(max_length=20, null=True, unique=True)    
 
     def __str__(self):
         return self.nome
 
 
 class UnidadeMedida(models.Model):
-    descricao = models.CharField(max_length=20, null=True)    
+    descricao = models.CharField(max_length=20, null=True,unique=True)    
 
     def __str__(self):
         return self.descricao
            
+class Ingrediente(models.Model):       
+    nome = models.CharField(max_length=20,null=True)    
+    quantidade = models.PositiveIntegerField(null=True)    
+    unidadeMedida=models.ForeignKey(
+        UnidadeMedida,
+        on_delete=models.CASCADE,
+        null=True
+        )  
+
+    def __str__(self):
+        return self.nome  
 
 class Receita(models.Model):
     autor = models.ForeignKey('auth.User', related_name='usuario')
-    nome = models.CharField(max_length=20)   
+    nome = models.CharField(max_length=20,unique=True)   
     categoria=models.ForeignKey(
         Categoria,
         on_delete=models.CASCADE,
@@ -27,6 +38,7 @@ class Receita(models.Model):
         )    
     dataCriacao = models.DateTimeField(
             default=timezone.now)     
+    ingredientes=models.ManyToManyField(Ingrediente)
     modoPreparo = models.TextField()
     tempoPreparo = models.TimeField()
     rendimento = models.PositiveIntegerField(null=True)   
@@ -37,21 +49,8 @@ class Receita(models.Model):
     def __str__(self):
         return self.nome   
 
-class Ingrediente(models.Model):   
-    receita= models.ForeignKey(
-       Receita,
-       on_delete=models.CASCADE,
-       null=True
-       )    
-    nome = models.CharField(max_length=20,null=True)    
-    quantidade = models.PositiveIntegerField(null=True)    
-    unidadeMedida=models.ForeignKey(
-        UnidadeMedida,
-        on_delete=models.CASCADE,
-        null=True
-        )  
+   
 
-    def __str__(self):
-        return self.nome     
+
 
         

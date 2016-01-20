@@ -17,5 +17,16 @@ angular.module("receitasFamilia").config(function($routeProvider){
             templateUrl:"view/login.html" ,
             controller: "usuarioCtrl"                        
         });
+
+         $routeProvider.when("/detalhesCategoria/:id",{
+            templateUrl:"view/detalhesCategoria.html" ,
+            controller: "detalhesCategoriaCtrl",
+            resolve:{
+                    categoria: function(categoriasAPI,$route){
+                            return categoriasAPI.getCategoria($route.current.params.id);
+                    }
+            }               
+        });
+
         $routeProvider.otherwise({redirectTo: "/home"});      
 });

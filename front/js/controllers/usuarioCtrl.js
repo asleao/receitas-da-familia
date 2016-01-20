@@ -1,11 +1,9 @@
 angular.module("receitasFamilia").controller("usuarioCtrl", function($scope,$http){
-    $scope.usuarios = [];
-
-    var carregarUsuarios = function(){
-        $http.get("http://localhost:8000/app/users/?format=json").success(function(data){
-            $scope.usuarios =data;
-        });
-    }; 
-
-    carregarUsuarios();      
+        $scope.usuarios = [];
+        
+        $scope.cadastrarUsuario = function(usuario){
+            $scope.usuarios.push(angular.copy(usuario));
+            delete $scope.usuario;
+            $scope.formCadastro.$setPristine();
+        };   
 });

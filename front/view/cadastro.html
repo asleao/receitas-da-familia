@@ -1,17 +1,17 @@
-<div class="jumbotron">
+<div class="jumbotron" name="formCadastro">
             <form>
                     <div class="form-group">
                             <label for="nome">Nome</label>
-                            <input type="text" class="form-control" id="nome" placeholder="Nome">
+                            <input type="text" class="form-control" id="nome" placeholder="Nome" ng-model="usuario.nome">
                     </div>
 
                     <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="email" class="form-control" id="email" placeholder="Email">
+                            <input type="email" class="form-control" id="email" placeholder="Email" ng-model="usuario.email">
                     </div>
                     <div class="form-group">
                             <label for="senha">Senha</label>
-                            <input type="password" class="form-control" id="senha" placeholder="Senha">
+                            <input type="password" class="form-control" id="senha" placeholder="Senha" ng-model="usuario.senha">
                     </div>
 
                     <div class="form-group">
@@ -19,7 +19,8 @@
                             <input type="password" class="form-control" id="confirmar_senha" placeholder="Confirmar Senha">
                     </div>
 
-                    <button type="submit" class="btn btn-success form-control">Cadastrar</button>
+                    <button type="submit" class="btn btn-success form-control" ng-click="cadastrarUsuario(usuario)">Cadastrar</button>
                     <button type="submit" class="btn btn-danger form-control">Limpar</button>
-            </form>
+            </form>     
+            {{usuarios}}                 
 </div>
