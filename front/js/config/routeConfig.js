@@ -22,7 +22,10 @@ angular.module("receitasFamilia").config(function($routeProvider){
             templateUrl:"view/detalhesCategoria.html" ,
             controller: "detalhesCategoriaCtrl",
             resolve:{
-                    categoria: function(categoriasAPI,$route){
+                    receitas: function(receitasAPI,$route){
+                            return receitasAPI.getReceitasInCategoria($route.current.params.id);
+                    },
+                     categoria: function(categoriasAPI,$route){
                             return categoriasAPI.getCategoria($route.current.params.id);
                     }
             }               
