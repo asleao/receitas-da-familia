@@ -30,6 +30,7 @@ class ReceitaSerializer(serializers.ModelSerializer):
     autor = UserSerializer()
     categoria = CategoriaSerializer()
     ingredientes = IngredienteSerializer(many=True)
+    tempoPreparo =  serializers.TimeField(format='%I:%M')   
 
     class Meta:
         model = Receita
