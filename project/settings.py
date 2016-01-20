@@ -145,5 +145,25 @@ REST_FRAMEWORK = {
     ]
 }
 
+CORS_ALLOW_HEADERS = (
+        'x-requested-with',
+        'content-type',
+        'accept',
+        'origin',
+        'authorization',
+        'x-csrftoken'
+    )
+
+CORS_ALLOW_METHODS = (
+        'GET',
+        'POST',
+        'PUT',
+        'PATCH',
+        'DELETE',
+        'OPTIONS'
+    )
+
 CORS_URLS_REGEX = r'^/app/.*$'
+
 CORS_ORIGIN_ALLOW_ALL = True
+
