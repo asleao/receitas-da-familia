@@ -31,5 +31,16 @@ angular.module("receitasFamilia").config(function($routeProvider){
             }               
         });
 
+            $routeProvider.when("/pagina-da-receita/:id",{
+            templateUrl:"view/pagina-da-receita.html" ,
+            controller: "paginaReceitaCtrl" ,
+            resolve:{
+                    receita: function(receitasAPI, $route){
+                            return receitasAPI.getReceita($route.current.params.id);
+                    }
+            }
+        });
+
+
         $routeProvider.otherwise({redirectTo: "/home"});      
 });

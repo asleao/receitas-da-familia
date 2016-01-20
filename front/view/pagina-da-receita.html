@@ -1,0 +1,17 @@
+<h2>{{receita.categoria.nome}}</h2>
+	<h1>{{receita.nome}}</h1>
+	<br/>
+	<div class="row col-md-12">
+		<div class="col-md-6">
+			<img id="indexImg" src="{{receita.foto}} "alt="..."  >
+		</div>
+		<div class="col-md-6">
+			<h5>Tempo de preparo: {{receita.tempoPreparo}}</h5>
+			<h5>Rendimento: {{receita.rendimento}}</h5>
+			<h5>Grau de dificuldade: {{receita.grauDificuldade}}</h5>
+			<h5>Nota: {{receita.nota}}</h5>
+			<p ng-repeat="ingrediente in receita.ingredientes">
+				{{ingrediente.nome}}    {{ingrediente.quantidade}}  {{ingrediente.unidadeMedida.descricao}}
+			</p>
+			<h5>Modo de preparo: {{receita.modoPreparo}}</h5>
+		</div>
