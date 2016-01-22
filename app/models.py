@@ -18,7 +18,7 @@ class UnidadeMedida(models.Model):
            
 class Ingrediente(models.Model):       
     nome = models.CharField(max_length=20,null=True)    
-    quantidade = models.PositiveIntegerField(null=True)    
+    quantidade = models.FloatField(null=True)    
     unidadeMedida=models.ForeignKey(
         UnidadeMedida,
         on_delete=models.CASCADE,
