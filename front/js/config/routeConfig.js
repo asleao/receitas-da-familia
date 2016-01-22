@@ -10,7 +10,7 @@ angular.module("receitasFamilia").config(function($routeProvider){
         });
          $routeProvider.when("/cadastro",{
             templateUrl:"view/cadastro.html" ,
-            controller: "usuarioCtrl"                        
+            controller: "usuarioCtrl"                                   
         });
 
          $routeProvider.when("/login",{

@@ -1,9 +1,10 @@
-angular.module("receitasFamilia").controller("usuarioCtrl", function($scope,$http){
+angular.module("receitasFamilia").controller("usuarioCtrl", function($scope, usuarioAPI){
         $scope.usuarios = [];
         
-        $scope.cadastrarUsuario = function(usuario){
-            $scope.usuarios.push(angular.copy(usuario));
-            delete $scope.usuario;
-            $scope.formCadastro.$setPristine();
+        $scope.cadastrarUsuario = function(usuario){            
+            usuarioAPI.postUsuario(usuario).success(function(data){
+               delete $scope.usuario;
+                $scope.formCadastro.$setPristine();
+            }); 
         };   
 });
