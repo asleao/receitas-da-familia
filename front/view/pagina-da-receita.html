@@ -1,17 +1,59 @@
-<h2>{{receita.categoria.nome}}</h2>
-	<h1>{{receita.nome}}</h1>
-	<br/>
-	<div class="row col-md-12">
-		<div class="col-md-6">
-			<img id="indexImg" src="{{receita.foto}} "alt="..."  >
+<h4 class="categoriaReceita col-md-12">
+	<a href="#">Home</a> >
+	<!-- <a href="#/detalhesCategoria/{{categoria.id}}" ng-model="$parent.filtroDeBusca.$"> {{receita.categoria.nome}} </a> > -->
+	<a href="#/pagina-da-receita/{{receita.id}}">{{receita.nome}}</a>
+</h4>
+<hr/>
+<h1 class="tituloPrincipal corLaranja maiusculo col-md-12">{{receita.nome}}</h1>
+
+<div class="row col-md-12">
+	<div class="col-md-5">
+		<img class="img-responsive" src="{{receita.foto}} "alt="{{ingrediente.nome}}"  >
+	</div>
+
+	<div class="col-md-3 textoGeral maiusculo text-center">
+		<div>
+			<i class="glyphicon glyphicon-time corLaranja"></i>
+			<span class="corLaranja">  Tempo de preparo </span>
+			<br/>
+			<span>{{receita.tempoPreparo}}</span>
 		</div>
-		<div class="col-md-6">
-			<h5>Tempo de preparo: {{receita.tempoPreparo}}</h5>
-			<h5>Rendimento: {{receita.rendimento}}</h5>
-			<h5>Grau de dificuldade: {{receita.grauDificuldade}}</h5>
-			<h5>Nota: {{receita.nota}}</h5>
+		<br/>
+		<div>
+			<i class="glyphicon glyphicon-cutlery corLaranja"></i>
+			<span class="corLaranja">  Rendimento</span>
+			<br/>
+			<span>{{receita.rendimento}} porções</span>
+		</div>
+		<br/>
+		<div>
+			<i class="glyphicon glyphicon-pushpin corLaranja"></i>
+			<span class="corLaranja">  Dificuldade</span>
+			<br/>
+			<span>{{receita.grauDificuldade}}</span>
+		</div>
+		<br/>
+		<div>
+			<i class="glyphicon glyphicon-heart corLaranja"></i>
+			<span class="corLaranja">  Nota</span>
+			<br/>
+			<span>{{receita.nota}}</span>
+		</div>
+	</div>
+
+	<div class="col-md-4 textoGeral maiusculo ">
+		<i class="glyphicon glyphicon-shopping-cart corLaranja"></i>
+		<span class="corLaranja">  Ingredientes</span>
+		<br/>
 			<p ng-repeat="ingrediente in receita.ingredientes">
-				{{ingrediente.nome}}    {{ingrediente.quantidade}}  {{ingrediente.unidadeMedida.descricao}}
+				{{ingrediente.quantidade}}  {{ingrediente.unidadeMedida.descricao}} de <strong>{{ingrediente.nome}}</strong>
 			</p>
-			<h5>Modo de preparo: {{receita.modoPreparo}}</h5>
-		</div>
+	</div>
+</div>
+
+<div class="col-md-7 textoGeral space">
+	<i class="glyphicon glyphicon-fire corLaranja"></i>
+	<span class="corLaranja maiusculo">  Modo de preparo</span>
+	<br/>
+	<span class="textoGeral"> {{receita.modoPreparo}}</span>
+</div>

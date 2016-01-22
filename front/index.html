@@ -1,6 +1,8 @@
 <html ng-app="receitasFamilia">
 <head>
 	<meta charset="UTF-8" />
+	<link href='https://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Cookie' rel='stylesheet' type='text/css'>
 	<script type="text/javascript" src="lib/angular/angular.js"></script>
 	<script type="text/javascript" src="lib/angular/angular-messages.js"></script>
 	<script type="text/javascript" src="lib/angular/angular-route.js"></script>
@@ -28,6 +30,13 @@
 </head>
 <body >
 	<div ng-include="'view/navbar.html'"></div>
-	<div ng-view></div>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 col-md-12">
+				<div ng-view></div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
