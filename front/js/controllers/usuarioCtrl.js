@@ -2,7 +2,7 @@ angular.module("receitasFamilia").controller("usuarioCtrl", function($scope, usu
         $scope.usuarios = [];
         
         $scope.cadastrarUsuario = function(usuario){            
-            usuarioAPI.postUsuario(usuario).success(function(data){
+            usuarioAPI.postCadastrarUsuario(usuario).success(function(data){
                delete $scope.usuario;
                 $scope.formCadastro.$setPristine();
                 $location.path("/home");

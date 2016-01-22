@@ -1,5 +1,5 @@
 angular.module("receitasFamilia").service("usuarioAPI",function($http, config){   
-    this.postUsuario = function(usuario){
+    this.postCadastrarUsuario = function(usuario){
         return $http.post(config.baseUrl +"/users/?format=json",usuario);
     };         
 });
