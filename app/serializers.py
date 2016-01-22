@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from .models import Receita,UnidadeMedida,Ingrediente,Categoria
 
 class UserSerializer(serializers.ModelSerializer):    
-
+    
     class Meta:
         model = User
         fields = ('id', 'username', 'email','password')
@@ -39,6 +39,7 @@ class ReceitaSerializer(serializers.ModelSerializer):
     categoria = CategoriaSerializer()
     ingredientes = IngredienteSerializer(many=True)
     tempoPreparo =  serializers.TimeField(format='%I:%M')   
+    autor = serializers.ReadOnlyField(source='autor.username')
 
     class Meta:
         model = Receita
