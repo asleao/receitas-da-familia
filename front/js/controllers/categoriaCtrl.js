@@ -1,9 +1,9 @@
-angular.module("receitasFamilia").controller("CategoriaCtrl", function($scope,$http){
+angular.module("receitasFamilia").controller("categoriaCtrl", function($scope,categoriasAPI){
     $scope.categorias = [];
 
  	var carregarCategorias = function(){
- 		$http.get("http://localhost:8000/app/categoria/?format=json").success(function(data){
- 			console.log(data);
+ 		categoriasAPI.getCategorias().success(function(data){
+ 			$scope.categorias =data;
  		});
  	}; 
 

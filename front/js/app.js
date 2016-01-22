@@ -1,2 +1,2 @@
-angular.module("receitasFamilia",["ngMessages"]);
+angular.module("receitasFamilia",["ngMessages","ngRoute"]);
 
