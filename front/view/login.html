@@ -1,15 +1,14 @@
 <h2 class="tituloPrincipal text-center corLaranja maiusculo">Login</h2>
-<div class="jumbotron">
-            <form>
+<div class="jumbotron">            
+            <form name="formLogin">
                     <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" class="form-control" id="email" placeholder="Email">
+                            <label for="username">Username</label>
+                            <input type="text" class="form-control" name="username" placeholder="Username" ng-model="usuario.username" ng-required = "true">
                     </div>
                     <div class="form-group">
                             <label for="password">Password</label>
-                            <input type="password" class="form-control" id="password" placeholder="Password">
+                            <input type="password" class="form-control" id="password" placeholder="Password" ng-model="usuario.password" ng-required = "true">
                     </div>
-
-                    <button  type="submit" class="btn btn-success form-control">Enviar</button>
+                    <button  type="submit" class="btn btn-success btn-block" ng-click="login(usuario)" ng-disabled="formLogin.$invalid">Enviar</button>
             </form>
 </div>

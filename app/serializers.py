@@ -44,6 +44,6 @@ class ReceitaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Receita
         fields = ('id', 'autor','nome','categoria','dataCriacao','ingredientes','modoPreparo',
-                          'tempoPreparo','rendimento','grauDificuldade','nota','foto')
+                          'tempoPreparo','rendimento','grauDificuldade','nota','foto')        
 
 

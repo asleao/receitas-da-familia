@@ -1,5 +1,5 @@
 angular.module("receitasFamilia",["ngMessages","ngRoute"]);
-angular.module("receitasFamilia").run(function($http){
-    $http.defaults.xsrfCookieName = 'csrftoken';
-    $http.defaults.xsrfHeaderName = 'X-CSRFToken';    
+angular.module("receitasFamilia").config(function($httpProvider){      
+    $httpProvider.defaults.xsrfCookieName = 'csrftoken';
+    $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';         
 });

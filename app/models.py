@@ -47,10 +47,4 @@ class Receita(models.Model):
     foto = models.ImageField(upload_to='fotos',null=True)
 
     def __str__(self):
-        return self.nome   
-
-   
-
-
-
-        
+        return self.nome       

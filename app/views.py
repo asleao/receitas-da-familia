@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 from rest_framework import permissions
 from .permissions import IsOwnerOrReadOnly
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
+from django.contrib.auth import authenticate
 
 
 
