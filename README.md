@@ -8,14 +8,14 @@ Todos os exemplos serão feitos utilizando o terminal do linux e o editor de tex
 
 ## Pré Requisitos:
 	
-	* Python3
-	* python3-dev
-	* libpq-dev
-	* Virtualenv	
-	* Postgres >= 9.3
-	* Angular <= 1.5
-	* Bootstrap <= 3.3.7
-	* Jquery <= 3.1.1
+* Python3
+* python3-dev
+* libpq-dev
+* Virtualenv	
+* Postgres >= 9.3
+* Angular <= 1.5
+* Bootstrap <= 3.3.7
+* Jquery <= 3.1.1
 
 ## Instalação
 
