@@ -2,9 +2,9 @@
 
 Este repositório irá desenvolver uma aplicação web de cadastro de receitas utilizando a linguagem Python e o framework Django para o back-end e a framework AngularJs para o front-end.
 
-O objetivo deste README é apresentar as funcionalidades das frameworks e o quanto elas agilizam o desenvolvimento de aplicações web.
+O objetivo deste projeto é conhecer as funcionalidades das frameworks e ver se de fato elas agilizam e facilitam o desenvolvimento de sistemas web.
 
-Todos os exemplos serão feitos utilizando o ambiente linux e o editor de texto Sublime Text.
+Todos os comandos serão executados utilizando um ambiente linux e o editor de texto Sublime Text.
 
 ## Pré Requisitos:
 	
