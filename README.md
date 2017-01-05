@@ -8,20 +8,20 @@ Todos os comandos serão executados utilizando um ambiente linux e o editor de t
 
 ## Pré Requisitos:
 	
-* Python3
-* python3-dev
-* libpq-dev
-* Virtualenv	
-* Postgres >= 9.3
-* Angular <= 1.5
-* Bootstrap <= 3.3.7
-* Jquery <= 3.1.1
+* **Python3**
+* **python3-dev**
+* **libpq-dev**
+* **Virtualenv**	
+* **Postgres >= 9.3**
+* **Angular <= 1.5**
+* **Bootstrap <= 3.3.7**
+* **Jquery <= 3.1.1**
 
 ## Instalação
 
 ### Configuração do ambiente
 
-Faça o download do projeto no link ou se possuir o git instalado execute o comando abaixo na pasta em que deseja salvar o projeto.
+Faça o download do projeto no [link](https://github.com/asleao/receitas-da-familia/archive/master.zip) ou se possuir o git instalado execute o comando abaixo na pasta em que deseja salvar o projeto.
 
 	git clone https://github.com/asleao/receitas-da-familia.git
 
