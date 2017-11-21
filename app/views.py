@@ -1,63 +1,74 @@
-from django.shortcuts import render,get_object_or_404
 from rest_framework import generics
-from .serializers import ReceitaSerializer,IngredienteSerializer,CategoriaSerializer,UserSerializer
-from .models import Receita,Categoria
-from django.contrib.auth.models import User
-from rest_framework import permissions
-from .permissions import IsOwnerOrReadOnly
-from rest_framework.authentication import SessionAuthentication, BasicAuthentication
-from django.contrib.auth import authenticate
+from rest_framework import viewsets
+from rest_framework.authentication import TokenAuthentication
+from rest_framework import filters
+from rest_framework.authtoken.serializers import AuthTokenSerializer
+from rest_framework.authtoken.views import ObtainAuthToken
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
+from . import serializers
+from . import models
+from . import permissions
 
 
 class ReceitaList(generics.ListCreateAPIView):
-    permission_classes = (permissions.IsAuthenticatedOrReadOnly,
-                                                IsOwnerOrReadOnly,)
-    queryset = Receita.objects.all()
-    serializer_class = ReceitaSerializer
+
+    queryset = models.Receita.objects.all()
+    serializer_class = serializers.ReceitaSerializer
+    permission_classes = (IsAuthenticatedOrReadOnly,)
+
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
 
 
 class ReceitaDetail(generics.RetrieveUpdateDestroyAPIView):
-    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
-    queryset = Receita.objects.all()
-    serializer_class = ReceitaSerializer
+
+    queryset = models.Receita.objects.all()
+    serializer_class = serializers.ReceitaSerializer
+    permission_classes = (IsAuthenticatedOrReadOnly,)
+
 
 class ReceitaInCategoria(generics.ListAPIView):
-    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)    
-    serializer_class = ReceitaSerializer
-    
-    def get_queryset(self):       
+
+    serializer_class = serializers.ReceitaSerializer
+    permission_classes = (IsAuthenticatedOrReadOnly,)
+
+    def get_queryset(self):
         categoria = self.kwargs['pk']
-        return Receita.objects.filter(categoria_id=categoria).order_by('id')    
+        return models.Receita.objects.filter(categoria_id=categoria).order_by('id')
+
 
 class CategoriaList(generics.ListCreateAPIView):
-    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
-    queryset = Categoria.objects.all()
-    serializer_class = CategoriaSerializer
+
+    queryset = models.Categoria.objects.all()
+    serializer_class = serializers.CategoriaSerializer
+    permission_classes = (IsAuthenticatedOrReadOnly,)
+
 
 class CategoriaDetail(generics.RetrieveUpdateDestroyAPIView):
-    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
-    queryset = Categoria.objects.all()
-    serializer_class = CategoriaSerializer
 
-class UserList(generics.ListCreateAPIView):    
-    queryset = User.objects.all()
-    serializer_class = UserSerializer    
-    authentication_classes = (SessionAuthentication, BasicAuthentication)
-
-    def get_permissions(self):
-        if self.request.method in permissions.SAFE_METHODS:
-            return (permissions.AllowAny(),)
-
-        if self.request.method == 'POST':
-            return (permissions.AllowAny(),)
-
-        return (permissions.IsAuthenticated(), IsReceitaOwner(),)     
+    queryset = models.Categoria.objects.all()
+    serializer_class = serializers.CategoriaSerializer
+    permission_classes = (IsAuthenticatedOrReadOnly,)
 
 
-class UserDetail(generics.RetrieveAPIView):
-    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
+class UserProfileViewSet(viewsets.ModelViewSet):
+    """Handle creating, reading and updating profiles"""
+
+    serializer_class = serializers.UserProfileSerializer
+    queryset = models.UserProfile.objects.all()
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (permissions.UpdateOwnProfile,)
+    filter_backends = (filters.SearchFilter,)
+    search_fields = ('name', 'email',)
+
+
+class LoginViewSet(viewsets.ViewSet):
+    """Checks email and password and returns an auth token."""
+
+    serializer_class = AuthTokenSerializer
+
+    def create(self, request):
+        """User the ObtainAuthToken APIView to validate and create a token."""
+
+        return ObtainAuthToken().post(request)

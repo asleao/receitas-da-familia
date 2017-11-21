@@ -1,49 +1,56 @@
 from rest_framework import serializers
-from django.contrib.auth.models import User
-from .models import Receita,UnidadeMedida,Ingrediente,Categoria
+from . import models
 
-class UserSerializer(serializers.ModelSerializer):    
-    
+
+class UserProfileSerializer(serializers.ModelSerializer):
+    """A serializer for our user profile objects."""
+
     class Meta:
-        model = User
-        fields = ('id', 'username', 'email','password')
-        write_only_fields = ('password',)
-        read_only_fields = ('id',)
+        model = models.UserProfile
+        fields = ('id', 'email', 'name', 'password')
+        extra_kwargs = {'password': {'write_only': True}}
 
     def create(self, validated_data):
-        user = User(email=validated_data['email'], username=validated_data['username'])
+        """Create and return a new user."""
+
+        user = models.UserProfile(
+            email=validated_data['email'],
+            name=validated_data['name']
+        )
+
         user.set_password(validated_data['password'])
         user.save()
+
         return user
 
 
 class CategoriaSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Categoria
+        model = models.Categoria
         fields = ('id', 'nome')
+
 
 class UnidadeMedidaSerializer(serializers.ModelSerializer):
     class Meta:
-        model = UnidadeMedida
-        fields = ('id', 'descricao')  
+        model = models.UnidadeMedida
+        fields = ('id', 'descricao')
 
-class IngredienteSerializer(serializers.ModelSerializer):            
-    unidadeMedida =   UnidadeMedidaSerializer() 
+
+class IngredienteSerializer(serializers.ModelSerializer):
+    unidadeMedida = UnidadeMedidaSerializer()
 
     class Meta:
-        model = Ingrediente
-        fields = ('id', 'nome','quantidade','unidadeMedida')        
+        model = models.Ingrediente
+        fields = ('id', 'nome', 'quantidade', 'unidadeMedida')
 
-class ReceitaSerializer(serializers.ModelSerializer):    
-    autor = UserSerializer()
+
+class ReceitaSerializer(serializers.ModelSerializer):
+    autor = UserProfileSerializer()
     categoria = CategoriaSerializer()
     ingredientes = IngredienteSerializer(many=True)
-    tempoPreparo =  serializers.TimeField(format='%I:%M')   
+    tempoPreparo = serializers.TimeField(format='%I:%M')
     autor = serializers.ReadOnlyField(source='autor.username')
 
     class Meta:
-        model = Receita
-        fields = ('id', 'autor','nome','categoria','dataCriacao','ingredientes','modoPreparo',
-                          'tempoPreparo','rendimento','grauDificuldade','nota','foto')        
-
-
+        model = models.Receita
+        fields = ('id', 'autor', 'nome', 'categoria', 'dataCriacao', 'ingredientes', 'modoPreparo', 'tempoPreparo', 'rendimento', 'grauDificuldade', 'nota', 'foto')

@@ -1,9 +1,8 @@
 from django.contrib import admin
-from .models import Receita,UnidadeMedida,Ingrediente,Categoria
+from . import models
 
-
-admin.site.register(Receita)
-admin.site.register(UnidadeMedida)
-admin.site.register(Ingrediente)
-admin.site.register(Categoria)
-
+admin.site.register(models.UserProfile)
+admin.site.register(models.Receita)
+admin.site.register(models.UnidadeMedida)
+admin.site.register(models.Ingrediente)
+admin.site.register(models.Categoria)
