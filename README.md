@@ -25,6 +25,7 @@ Entre na pasta do projeto e digite os seguintes comandos:
 	docker-compose run web python manage.py createsuperuser
 
 Para rodar o projeto digite o comando:
+
 	docke-compose up
 
 ### Configuração do manual do ambiente
