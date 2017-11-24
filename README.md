@@ -6,27 +6,41 @@ O objetivo deste projeto é conhecer as funcionalidades das frameworks e ver se 
 
 Todos os comandos serão executados utilizando um ambiente linux e o editor de texto Sublime Text.
 
-## Pré Requisitos:
-	
-* **Python3**
-* **python3-dev**
-* **libpq-dev**
-* **Virtualenv**	
-* **Postgres >= 9.3**
-* **Angular <= 1.5**
-* **Bootstrap <= 3.3.7**
-* **Jquery <= 3.1.1**
-
 ## Instalação
 
-### Configuração do ambiente
 
 Faça o download do projeto no [link](https://github.com/asleao/receitas-da-familia/archive/master.zip) ou se possuir o git instalado execute o comando abaixo na pasta em que deseja salvar o projeto.
 
 	git clone https://github.com/asleao/receitas-da-familia.git
 
-Em seguida vá até a pasta onde o projeto foi salvo e crie o ambiente virtual python com o seguinte comando:
-	
+### Docker
+
+#### Pré-Requisitos:
+* **Docker**
+* **Docker Compose**
+
+Entre na pasta do projeto e digite os seguintes comandos:
+
+	docker-compose run web python manage.py migrate
+	docker-compose run web python manage.py createsuperuser
+
+Para rodar o projeto digite o comando:
+	docke-compose up
+
+### Configuração do manual do ambiente
+
+#### Pré Requisitos:
+
+* **Python3**
+* **python3-dev**
+* **libpq-dev**
+* **Virtualenv**
+* **Postgres >= 9.3**
+
+Caso não queira configurar o ambiente com o docker, basta seguir os passos abaixo para configurar todo o sistema.
+
+Navegue até a pasta onde o projeto foi salvo e crie o ambiente virtual python com o seguinte comando:
+
 	virtualenv -p python3 env
 
 Ative-o:
@@ -38,7 +52,7 @@ Instale as dependências:
 	pip install -r requirements.txt
 
 Nota: Caso receba um erro com framework psycopg2, lembre-se de que as dependências python3-dev e libpq-dev devem estar instaladas antes do procedimento acima ser executado. No Ubuntu, para instalá-las basta executar o comando:
-	
+
 	sudo apt-get install python3-dev libpq-dev
 
 ### Banco de dados:
