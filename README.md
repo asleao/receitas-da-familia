@@ -26,7 +26,7 @@ Entre na pasta do projeto e digite os seguintes comandos:
 
 Para rodar o projeto digite o comando:
 
-	docke-compose up
+	docker-compose up
 
 ### Configuração do manual do ambiente
 
