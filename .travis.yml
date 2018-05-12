@@ -19,4 +19,4 @@ deploy:
   app: receitas-api
   on:
     repo: asleao/receitas-da-familia-api
-    branch: release/1.0
+    branch: master
