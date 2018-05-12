@@ -10,13 +10,10 @@ addons:
     organization: asleao-github
     token:
       secure: "$SONAR_TOKEN"
-      branches:
-      - master
-      - develop
 install:
 - pip install -r requirements.txt
 script:
-- sonar-scanner -Dsonar.login=$SONAR_TOKEN
+- sonar-scanner -Dsonar.login=$SONAR_TOKEN -X
 deploy:
   provider: heroku
   api_key:
