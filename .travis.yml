@@ -1,0 +1,22 @@
+dist: trusty
+sudo: false
+language: python
+python:
+- '3.5'
+addons:
+  sonarcloud:
+    organization: asleao-github
+    token:
+      secure: "$SONAR_TOKEN"
+install:
+- pip install -r requirements.txt
+script:
+- sonar-scanner -Dsonar.login=$SONAR_TOKEN
+deploy:
+  provider: heroku
+  api_key:
+    secure: fuZ9Y6mndSdJV4ARKpKUhJ8Qk3MozYk0ac5fzqE/728XJB7I1U36JK9lGJ4MEJjnwP0KaX5mrxvpvr++7BJBBbEXv5iz2ZLVmtrrxohRkTkAzx7vUXtwhuzxhCWolQGmk5MRWKLDoAvI81YfPJwSbV8K7U/2ewjzgqqSftGnpYRDH/rkmpGmeIADlItL+xJtqh+Pw2ATnjhSoTHHmJ+fcEBN3zxYqMdZu5hAVg0nT8HLJ7LIScxIc58HAY5cVSd3su3gLCl/ZzHZLXt1p9qwOY1KtvnI+yFOX+PSVp6CwyQIXN6+VkrYYaSOu35nn4k3dHDWmYSHS7QJoEjnJ7wCParXAQ/zwP60kPJSYOD2NV3IfiJ0PGKYiPev+5hO4pW0nPaFHbCNh01nWV8StnyS9cYMNKF0AwyE5uBIfrv0L8Tte8qOl4oxJ6nOC++7SVhR2L2woSjkP+sLDEm4fy1qoZwd+9KSQO2fqh81jH3h3//8kXntHe6c/FHcF8VGzpr4YCKtufMOCE4tYwIszMqoaXaPipnbshlt47Jag5YM5lZl8Gsu/KB1DLgcVFq+Y4fliBV0MJUnUdzOZBsH84vcA3oldYpKlS2km+Fj5J4bkzxOXvw3+res36xdYYCqKxn4W07ut8h3G/ybIYg8GpvBEJVJErD33JHVcl0A6bFjmZs=
+  app: receitas-api
+  on:
+    repo: asleao/receitas-da-familia-api
+    branch: master
