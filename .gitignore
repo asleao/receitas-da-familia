@@ -60,7 +60,6 @@ target/
 
 #Pasta Pessoal
 virtual
-modelagem
 tutorial
 db.backends.postgresql
 .DS_Store
